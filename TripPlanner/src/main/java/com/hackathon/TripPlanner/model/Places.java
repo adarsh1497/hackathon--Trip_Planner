@@ -1,5 +1,7 @@
 package com.hackathon.TripPlanner.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -12,6 +14,7 @@ import lombok.Setter;
 @Table(name = "places")
 public class Places extends Auditable {
 	
+	
 	@Getter
 	@Setter
 	String name;
@@ -21,14 +24,11 @@ public class Places extends Auditable {
 	@Setter
 	Address address;
 	
-	@ManyToOne
 	@Getter
 	@Setter
 	City city;
 	
 	
-	@OneToOne
-	@Getter
-	@Setter
-	Location location;
+	Set<Type> types;
+	
 }

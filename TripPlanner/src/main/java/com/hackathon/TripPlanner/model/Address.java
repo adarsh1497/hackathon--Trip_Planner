@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
+
 @Table(name = "address")
 public class Address {
 	
@@ -19,14 +19,7 @@ public class Address {
 	
 	@Getter
 	@Setter
-	int pincode;
-	
-	
-	@Getter
-	@Setter
-	String city;
-	
-	
+	String cityName;
 	
 	@Getter
 	@Setter

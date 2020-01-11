@@ -3,6 +3,7 @@ package com.hackathon.TripPlanner.model;
 import lombok.Getter;
 
 public enum Type {
+	
 	CULTURAL(1) ,
 	WATER_SPORTS_AND_SCUBA_DIVING(2),
 	ADVENTURE_HIKING(3),
@@ -22,12 +23,5 @@ public enum Type {
 		this.value = value;
 	}
 	
-	public static Type fromValue(int value) {
-		for(Type type: Type.values()) {
-			if(type.getValue() == value) {
-				return type.name() ;
-			}
-		}
-		
-	}
+	
 }

@@ -1,5 +1,19 @@
 package com.hackathon.TripPlanner.model;
 
-public class Route {
+import java.util.List;
+import java.util.Set;
 
+import javax.persistence.OneToMany;
+
+public class Route {
+	
+	
+	
+	@OneToMany
+	private Set<Places> selectedByUser;
+	
+	@OneToMany
+	private List<Places> visitingSequence;
+	
+	
 }
