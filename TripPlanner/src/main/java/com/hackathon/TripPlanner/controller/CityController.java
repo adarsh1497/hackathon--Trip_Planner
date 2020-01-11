@@ -16,42 +16,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hackathon.TripPlanner.model.City;
-import com.hackathon.TripPlanner.model.Places;
+import com.hackathon.TripPlanner.model.Place;
 import com.hackathon.TripPlanner.model.Type;
 import com.hackathon.TripPlanner.repository.CityRepository;
 
 @RestController
-@RequestMapping("/cities")
+@RequestMapping("/dev")
 @CrossOrigin("192.168.1.226:4200")
 public class CityController {
 
 	@Autowired
 	CityRepository cityRepo;
 	
-	@GetMapping("/all")
+	@GetMapping("/cities")
 	public List<City> getAllCities(){
 		return cityRepo.findAll();
 	}
 	
 	
-	@GetMapping("/all/{id}")
-	public Optional<City> getCity(@PathVariable("id") Long id) {
-		return cityRepo.findById(id);
+	@GetMapping("/cities/{id}")
+	public City getCity(@PathVariable("id") Long id) {
+		return cityRepo.findById(id).get();
 	}
 	
-	@PostMapping("/add")
+	@PostMapping("/cities")
 	public City addCity(@RequestBody City city) {
 		cityRepo.save(city);
 		return city;
 	}
 	
-	@GetMapping("/places")
-	public Set<Places> getAllPlaces(@RequestBody Long id){
+	@GetMapping("/cities/places")
+	public Set<Place> getAllPlaces(@RequestBody Long id){
 		Optional<City> city = cityRepo.findById(id);
 		return city.get().getPlaces();
 	}
 	
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/cities/{id}")
 	public void deleteCity(@PathVariable("id") Long id) {
 		if(cityRepo.existsById(id))
 			cityRepo.deleteById(id);

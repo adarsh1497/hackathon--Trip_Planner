@@ -5,10 +5,13 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Getter;
 import lombok.Setter;
 
 
+@JsonIgnoreProperties(ignoreUnknown = true, value = {"places"})
 @Entity
 public class Type extends Auditable {
 	
@@ -17,9 +20,8 @@ public class Type extends Auditable {
 	private String type;
 	
 	
-	@ManyToMany
+	@ManyToMany(mappedBy="types")
 	@Getter
 	@Setter
-	List<Places> places;
-	
+	private List<Place> places;
 }

@@ -15,7 +15,7 @@ import lombok.Setter;
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public class Auditable implements Serializable {
+public abstract class Auditable implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

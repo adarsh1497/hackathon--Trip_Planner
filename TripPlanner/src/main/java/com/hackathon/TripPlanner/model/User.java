@@ -18,7 +18,7 @@ public class User extends Person {
 	
 	@Getter
 	@Setter
-	@OneToMany
+	@OneToMany(mappedBy = "user")
 	private  Set<Route> routes ; 
 	
 	

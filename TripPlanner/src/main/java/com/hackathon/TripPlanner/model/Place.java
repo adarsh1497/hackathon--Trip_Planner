@@ -2,28 +2,24 @@ package com.hackathon.TripPlanner.model;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+
 import javax.persistence.Table;
 
-import org.hibernate.type.TrueFalseType;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Getter;
 import lombok.Setter;
 
-@JsonIgnoreProperties(ignoreUnknown = true , value = {"types"})
+@JsonIgnoreProperties(ignoreUnknown = true , value = {"types","city"})
 @Entity
 @Table(name = "places")
-public class Places extends Auditable {
-	
+public class Place extends Auditable {
 	
 	@Getter
 	@Setter
@@ -33,19 +29,18 @@ public class Places extends Auditable {
 	@Setter
 	private float rating;
 	
+	@Getter
+	@Setter
+	private String name;
 	
 	@Getter
 	@Setter
-	private String placeName;
-	
-	@Getter
-	@Setter
-	Location location;
+	private Location location;
 	
 	@ManyToOne
 	@Getter
 	@Setter
-    private City city;
+    private City city ;
 	
 	@ManyToMany
 	@Getter

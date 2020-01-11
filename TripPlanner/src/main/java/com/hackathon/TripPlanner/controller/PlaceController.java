@@ -12,14 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hackathon.TripPlanner.model.City;
-import com.hackathon.TripPlanner.model.Places;
+import com.hackathon.TripPlanner.model.Place;
+import com.hackathon.TripPlanner.model.Route;
 import com.hackathon.TripPlanner.model.Type;
 import com.hackathon.TripPlanner.repository.CityRepository;
 import com.hackathon.TripPlanner.repository.PlaceRepository;
+import com.hackathon.TripPlanner.repository.RouteRepository;
 
 @RestController
-@RequestMapping("/places")
-public class PlacesController {
+@RequestMapping("/dev")
+public class PlaceController {
 
 	@Autowired
 	PlaceRepository placeRepo;
@@ -27,23 +29,33 @@ public class PlacesController {
 	@Autowired
 	CityRepository cityRepo;
 	
-	@GetMapping("/filter")
-	public Set<Places> filteredPlaces(@RequestBody Set<Type> types){
-		Set<Places> places = new HashSet<Places>();
+	@Autowired
+	RouteRepository routeRepo;
+	
+	@GetMapping("/place/filter")
+	public Set<Place> filteredPlaces(@RequestBody Set<Type> types){
+		Set<Place> places = new HashSet<Place>();
 		for(Type type : types) {
-			for(Places place :type.getPlaces()) {
+			for(Place place :type.getPlaces()) {
 				places.add(place);
 			}
 		}
+		Route route = new Route();
+		route.setSelectedByUser(places);
 		return places;
 	}
 	
-	@PostMapping("/add")
-	public Places addPlace(@RequestBody Places place) {
+	
+	@PostMapping("/place")
+	public Place addPlace(@RequestBody Place place) {
 		City city = place.getCity();
 		city.addPlace(place);
-		//cityRepo.save(city);
+		
+		cityRepo.save(city);
+		
 		placeRepo.save(place);
 		return place;
 	}
+	
+	
 }

@@ -16,20 +16,19 @@ import lombok.Setter;
 @EntityListeners(AuditingEntityListener.class)
 public class Person {
 	
+	
+	
 	@Id
+	@NotNull
 	@Getter
 	@Setter
-	String userName;
+	String email;
 	
 	@NotNull
 	@Getter
 	@Setter
 	String name;
 	
-	@NotNull
-	@Getter
-	@Setter
-	String email;
 	
 	@Getter
 	@Setter

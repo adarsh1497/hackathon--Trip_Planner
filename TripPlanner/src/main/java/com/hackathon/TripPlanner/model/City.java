@@ -29,10 +29,10 @@ public class City extends Auditable {
 	private Location location;
 
 	@Getter
-	@OneToMany(cascade = CascadeType.ALL)
-	private Set<Places> places = new HashSet<Places>();
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="city")
+	private Set<Place> places = new HashSet<>();
 	
-	public void addPlace(Places place) {
+	public void addPlace(Place place) {
 		places.add(place);
 	}
 }

@@ -16,7 +16,6 @@ import lombok.Setter;
 @Entity
 public class Route extends Auditable {
 	
-	@Id
 	@ManyToOne
 	@Getter
 	@Setter
@@ -25,18 +24,15 @@ public class Route extends Auditable {
 	@Getter
 	@Setter
 	@OneToMany
-	private Set<Places> selectedByUser;
+	private Set<Place> selectedByUser;
 	
 	@Getter
 	@Setter
 	@OneToMany
-	private List<Places> visitingSequence = new ArrayList<Places>() ;
+	private List<Place> visitingSequence = new ArrayList<Place>() ;
 	
-	/*
-	 * public double getDistance(Places p1 , Places p2) {
-	 * p1.getAddress().location.latitude }
-	 */
-	public void setArrangedPlaces(Set<Places> selectedByUser) {
+	
+	public void setArrangedPlaces(Set<Place> selectedByUser) {
 		
 	}
 	
