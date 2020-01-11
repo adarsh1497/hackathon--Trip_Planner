@@ -47,11 +47,6 @@ public class UserController {
 		 */
 	}
 	
-	@PostMapping("/add/user")
-	public void addUser(@RequestBody User user) {
-		userRepo.save(user);
-	}
-	
 	
 	@PostMapping("/add/route" )
 	public void addRoute(@RequestBody Route route) {

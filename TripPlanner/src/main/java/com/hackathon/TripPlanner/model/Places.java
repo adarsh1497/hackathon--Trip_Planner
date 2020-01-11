@@ -21,22 +21,31 @@ public class Places extends Auditable {
 	
 	@Getter
 	@Setter
-	String name;
+	private String description;
+	
+	@Getter
+	@Setter
+	private float rating;
+	
+	
+	@Getter
+	@Setter
+	private String name;
 	
 	@OneToOne
 	@Getter
 	@Setter
-	Address address;
+	private Address address;
 	
 	@ManyToOne
 	@Getter
 	@Setter
-	City city;
+    private City city;
 	
 	@ManyToMany
 	@Getter
 	@Setter
-	Set<Type> types;
+	private Set<Type> types;
 	
 	
 }

@@ -1,6 +1,7 @@
 package com.hackathon.TripPlanner.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -29,7 +30,7 @@ public class Route implements Serializable {
 	@Getter
 	@Setter
 	@OneToMany
-	private List<Places> visitingSequence;
+	private List<Places> visitingSequence = new ArrayList<Places>() ;
 	
 	
 }
