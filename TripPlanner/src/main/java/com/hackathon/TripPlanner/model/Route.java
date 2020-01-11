@@ -14,7 +14,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-public class Route implements Serializable {
+public class Route extends Auditable {
 	
 	@Id
 	@ManyToOne
@@ -32,5 +32,12 @@ public class Route implements Serializable {
 	@OneToMany
 	private List<Places> visitingSequence = new ArrayList<Places>() ;
 	
+	/*
+	 * public double getDistance(Places p1 , Places p2) {
+	 * p1.getAddress().location.latitude }
+	 */
+	public void setArrangedPlaces(Set<Places> selectedByUser) {
+		
+	}
 	
 }

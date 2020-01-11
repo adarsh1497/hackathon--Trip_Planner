@@ -25,9 +25,4 @@ public class Address extends Auditable {
 	@Setter
 	String country;
 	
-	@Getter
-	@Setter
-	@OneToOne
-	Location location;
-	
 }

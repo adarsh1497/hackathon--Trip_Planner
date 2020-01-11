@@ -9,10 +9,12 @@ import javax.persistence.OneToOne;
 import org.springframework.data.util.Pair;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Getter;
 import lombok.Setter;
 
+@JsonIgnoreProperties(ignoreUnknown = true , value = {"address"})
 @Entity
 public class Location implements Serializable  {
 
