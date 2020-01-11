@@ -1,5 +1,7 @@
 package com.hackathon.TripPlanner.model;
 
+import java.io.Serializable;
+
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,7 +15,7 @@ import lombok.Setter;
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public class Auditable {
+public class Auditable implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

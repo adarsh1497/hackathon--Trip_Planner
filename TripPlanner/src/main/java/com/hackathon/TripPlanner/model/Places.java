@@ -3,7 +3,11 @@ package com.hackathon.TripPlanner.model;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -24,11 +28,15 @@ public class Places extends Auditable {
 	@Setter
 	Address address;
 	
+	@ManyToOne
 	@Getter
 	@Setter
 	City city;
 	
-	
+	@ManyToMany
+	@Getter
+	@Setter
 	Set<Type> types;
+	
 	
 }

@@ -40,9 +40,11 @@ public class UserController {
 	
 	@GetMapping("/user/login/{userName}/{password}")
 	public void login(@PathVariable("userName") String userName , @PathVariable("password") String password) {
-		if(userRepo.existsById(userName) && userRepo. ) {
-			
-		}
+		/*
+		 * if(userRepo.existsById(userName) && userRepo. ) {
+		 * 
+		 * }
+		 */
 	}
 	
 	@PostMapping("/add/user")
@@ -53,6 +55,6 @@ public class UserController {
 	
 	@PostMapping("/add/route" )
 	public void addRoute(@RequestBody Route route) {
-		if(userRepo.)
+		//if(userRepo.)
 	}
 }

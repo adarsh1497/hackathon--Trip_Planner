@@ -1,17 +1,17 @@
 package com.hackathon.TripPlanner.model;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Getter;
 import lombok.Setter;
 
-
+@Entity
 @Table(name = "address")
-public class Address {
+public class Address extends Auditable {
 	
 	@Getter
 	@Setter
@@ -25,10 +25,9 @@ public class Address {
 	@Setter
 	String country;
 	
-	@OneToOne
 	@Getter
 	@Setter
+	@OneToOne
 	Location location;
-	
 	
 }

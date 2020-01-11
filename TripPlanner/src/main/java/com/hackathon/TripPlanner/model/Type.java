@@ -1,27 +1,24 @@
 package com.hackathon.TripPlanner.model;
 
-import lombok.Getter;
+import java.util.List;
 
-public enum Type {
-	
-	CULTURAL(1) ,
-	WATER_SPORTS_AND_SCUBA_DIVING(2),
-	ADVENTURE_HIKING(3),
-	ECOTOURISM(4),
-	CULTURAL_FOR_MUSEUMS(5),
-	LOCAL_TRADITION(6),
-	CULINARY(7) ,                      // FOOD IS MAJOR CRITERIA
-	RELIGIOUS_DESTINATIONS(8),
-	SHOPPING_DESTINATIONS(9);
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+public class Type extends Auditable {
 	
 	@Getter
-	private int value;
+	@Setter
+	private String type;
 	
 	
-
-	private Type(int value) {
-		this.value = value;
-	}
-	
+	@ManyToMany
+	@Getter
+	@Setter
+	List<Places> places;
 	
 }

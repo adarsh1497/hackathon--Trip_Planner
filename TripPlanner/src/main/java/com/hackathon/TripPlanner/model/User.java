@@ -15,11 +15,11 @@ import lombok.Setter;
 @Entity
 public class User extends Person {
 	
-	@OneToMany
-	private  Set<Route> routes = new HashSet<Route>(); 
 	
-	public void addRoute(Route route) {
-		routes.add(route);
-	}
+	@Getter
+	@Setter
+	@OneToMany
+	private  Set<Route> routes ; 
+	
 	
 }

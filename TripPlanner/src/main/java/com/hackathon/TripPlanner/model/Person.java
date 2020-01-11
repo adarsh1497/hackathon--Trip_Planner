@@ -7,14 +7,14 @@ import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-
-public abstract class Person {
+public class Person {
 	
 	@Id
 	@Getter
