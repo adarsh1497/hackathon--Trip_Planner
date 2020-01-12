@@ -32,8 +32,12 @@ public class Route extends Auditable {
 	private List<Place> visitingSequence = new ArrayList<Place>() ;
 	
 	
+	
+	//  to be changed with Travelling SalesMan Algo
 	public void setArrangedPlaces(Set<Place> selectedByUser) {
-		
+		for(Place place : selectedByUser) {
+			visitingSequence.add(place);
+		}
 	}
 	
 }

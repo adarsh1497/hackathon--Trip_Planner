@@ -1,13 +1,14 @@
 package com.hackathon.TripPlanner.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
-
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -33,6 +34,7 @@ public class Place extends Auditable {
 	@Setter
 	private String name;
 	
+	@OneToOne(cascade = CascadeType.ALL)
 	@Getter
 	@Setter
 	private Location location;
@@ -42,10 +44,10 @@ public class Place extends Auditable {
 	@Setter
     private City city ;
 	
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	@Getter
 	@Setter
-	private Set<Type> types;
+	private Set<Type> types = new HashSet<Type>();
 	
 	public void addType(Type type) {
 		types.add(type);

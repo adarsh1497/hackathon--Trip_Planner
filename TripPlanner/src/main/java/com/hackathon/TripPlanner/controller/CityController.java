@@ -22,7 +22,6 @@ import com.hackathon.TripPlanner.repository.CityRepository;
 
 @RestController
 @RequestMapping("/dev")
-@CrossOrigin("192.168.1.226:4200")
 public class CityController {
 
 	@Autowired
@@ -45,8 +44,8 @@ public class CityController {
 		return city;
 	}
 	
-	@GetMapping("/cities/places")
-	public Set<Place> getAllPlaces(@RequestBody Long id){
+	@GetMapping("/cities/places/{id}")
+	public Set<Place> getAllPlaces(@PathVariable("id") Long id){
 		Optional<City> city = cityRepo.findById(id);
 		return city.get().getPlaces();
 	}

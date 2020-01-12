@@ -4,8 +4,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +21,7 @@ import com.hackathon.TripPlanner.model.Type;
 import com.hackathon.TripPlanner.repository.CityRepository;
 import com.hackathon.TripPlanner.repository.PlaceRepository;
 import com.hackathon.TripPlanner.repository.RouteRepository;
+import com.hackathon.TripPlanner.repository.TypeRepository;
 
 @RestController
 @RequestMapping("/dev")
@@ -30,7 +34,12 @@ public class PlaceController {
 	CityRepository cityRepo;
 	
 	@Autowired
-	RouteRepository routeRepo;
+	TypeRepository typeRepo;
+	
+	@GetMapping("/place/all")
+	public List<Place> getAllPlaces(){
+		return placeRepo.findAll();
+	}
 	
 	@GetMapping("/place/filter")
 	public Set<Place> filteredPlaces(@RequestBody Set<Type> types){
@@ -46,16 +55,24 @@ public class PlaceController {
 	}
 	
 	
-	@PostMapping("/place")
-	public Place addPlace(@RequestBody Place place) {
-		City city = place.getCity();
-		city.addPlace(place);
+	@PostMapping("/place/{cityId}/{typeId}")
+	public Place addPlace( @Valid @RequestBody Place place ,  @PathVariable("cityId") Long cityId , @PathVariable("typeId") Long typeId )  {
+		City city = cityRepo.findById(cityId).get();
+		Type type = typeRepo.findById(typeId).get();
 		
+		Place newPlace = new Place();
+		
+		newPlace.setRating(place.getRating());
+		newPlace.setCity(city);
+		newPlace.setDescription(place.getDescription());
+		newPlace.setLocation(place.getLocation());
+		newPlace.setName(place.getName());
+		newPlace.addType(type);
+		
+		placeRepo.save(newPlace);
+		city.addPlace(newPlace);
 		cityRepo.save(city);
-		
-		placeRepo.save(place);
-		return place;
+		return newPlace;
 	}
-	
 	
 }

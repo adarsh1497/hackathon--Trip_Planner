@@ -16,13 +16,11 @@ import lombok.Setter;
 @EntityListeners(AuditingEntityListener.class)
 public class Person {
 	
-	
-	
+
 	@Id
-	@NotNull
 	@Getter
 	@Setter
-	String email;
+	String userName;
 	
 	@NotNull
 	@Getter

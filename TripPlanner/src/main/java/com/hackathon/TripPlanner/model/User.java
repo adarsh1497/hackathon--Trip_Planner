@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -18,8 +19,9 @@ public class User extends Person {
 	
 	@Getter
 	@Setter
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
 	private  Set<Route> routes ; 
+	
 	
 	
 }

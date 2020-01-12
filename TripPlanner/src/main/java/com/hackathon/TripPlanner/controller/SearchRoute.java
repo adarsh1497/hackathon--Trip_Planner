@@ -7,8 +7,4 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/search")
 public class SearchRoute {
 	
-	
-	
-	
-	
 }

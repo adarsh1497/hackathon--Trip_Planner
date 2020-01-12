@@ -16,10 +16,6 @@ public class Location extends Auditable {
 	
 	@Getter
 	@Setter
-	String cityName;
-	
-	@Getter
-	@Setter
 	String country;
 	
 	@Getter
